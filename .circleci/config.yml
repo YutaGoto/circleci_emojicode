@@ -19,10 +19,10 @@ jobs:
             && cd .. && rm -r Emojicode-1.0-beta.2-Linux-x86_64
       - run:
           name: build emojicode
-          run: emojicodec hello.emojic
+          command: emojicodec hello.emojic
       - run:
           name: run
-          run: ./hello
+          command: ./hello
 
 workflows:
   version: 2

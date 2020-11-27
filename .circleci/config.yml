@@ -13,8 +13,8 @@ jobs:
       - run:
           name: install rsync
           command: |
-            apt install -y sudo && \
-            sudo apt install -y rsync
+            apt update && \
+            apt install -y rsync
       - run:
           name: install emojicode
           command: |

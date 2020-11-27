@@ -11,10 +11,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: install rsync
+          name: install some module
           command: |
             apt update && \
-            apt install -y rsync
+            apt install -y rsync libncurses5
       - run:
           name: install emojicode
           command: |

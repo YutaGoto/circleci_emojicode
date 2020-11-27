@@ -12,7 +12,7 @@ jobs:
       - checkout
       - run:
           name: install rsync
-          command: apt install -y rsync
+          command: apt-get install -y rsync
       - run:
           name: install emojicode
           command: |

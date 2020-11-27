@@ -11,8 +11,8 @@ jobs:
     steps:
       - checkout
       - run:
-        name: install rsync
-        command: sudo apt install -y rsync
+          name: install rsync
+          command: sudo apt install -y rsync
       - run:
           name: install emojicode
           command: |

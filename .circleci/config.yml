@@ -1,10 +1,21 @@
 version: 2.1
 
+ubuntu_image: &ubuntu_image
+  ubuntu:18.04
+
 orbs:
   emojicode: yutagoto/emojicode@1.0.0
 
+executors:
+  ubuntu-docker:
+    docker:
+      - image: *ubuntu_image
+        environment:
+          TZ: Asia/Tokyo
+
 jobs:
   run_emojicode:
+    executor: ubuntu-docker
     steps:
       - checkout
       - run: apt update && apt install -y sudo || true

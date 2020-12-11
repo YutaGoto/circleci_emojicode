@@ -18,7 +18,7 @@ jobs:
     executor: ubuntu-docker
     steps:
       - checkout
-      - run: apt update && apt install -y sudo || true
+      - run: apt update && apt install -y sudo wget || true
       - emojicode/install
       - run:
           name: build emojicode

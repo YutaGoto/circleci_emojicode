@@ -22,7 +22,7 @@ jobs:
       - run:
           name: run
           command: ./hello
-  notify:
+  slack-notify:
     steps:
       - slack/notify:
           event: fail
@@ -64,5 +64,5 @@ workflows:
   build:
     jobs:
       - run_emojicode
-      - notify:
+      - slack-notify:
           context: slack

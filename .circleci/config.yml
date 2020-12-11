@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   emojicode: yutagoto/emojicode@1.0.0
-  slack: circleci/slack@4.1.3
 
 executors:
   cpp:
@@ -22,47 +21,9 @@ jobs:
       - run:
           name: run
           command: ./hello
-  slack-notify:
-    steps:
-      - slack/notify:
-          event: fail
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "faild build or command",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
-      - slack/notify:
-          event: pass
-          custom: |
-            {
-              "blocks": [
-                {
-                  "type": "section",
-                  "fields": [
-                    {
-                      "type": "plain_text",
-                      "text": "succeed build and command!! hello emoji!",
-                      "emoji": true
-                    }
-                  ]
-                }
-              ]
-            }
 
 workflows:
   version: 2
   build:
     jobs:
       - run_emojicode
-      - slack-notify:
-          context: slack

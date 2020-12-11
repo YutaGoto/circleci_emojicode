@@ -13,7 +13,7 @@ jobs:
     executor: cpp
     steps:
       - checkout
-      - run: apt install -y sudo
+      - run: apt install -y sudo || true
       - emojicode/install
       - run:
           name: build emojicode

@@ -3,14 +3,8 @@ version: 2.1
 orbs:
   emojicode: yutagoto/emojicode@1.0.0
 
-executors:
-  cpp:
-    docker:
-      - image: gcc:latest
-
 jobs:
   run_emojicode:
-    executor: cpp
     steps:
       - checkout
       - run: apt update && apt install -y sudo || true

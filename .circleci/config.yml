@@ -1,5 +1,8 @@
 version: 2.1
 
+orbs:
+  emojicode: yutagoto/emojicode@1.0.0
+
 executors:
   cpp:
     docker:
@@ -10,18 +13,8 @@ jobs:
     executor: cpp
     steps:
       - checkout
-      - run:
-          name: install some module
-          command: |
-            apt update && \
-            apt install -y rsync libncurses5
-      - run:
-          name: install emojicode
-          command: |
-            wget https://github.com/emojicode/emojicode/releases/download/v1.0-beta.2/Emojicode-1.0-beta.2-Linux-x86_64.tar.gz -O emojicode.tar.gz \
-            && tar -xzf emojicode.tar.gz && rm emojicode.tar.gz \
-            && cd Emojicode-1.0-beta.2-Linux-x86_64 && yes | ./install.sh || true \
-            && cd ..
+      - run: apt update && apt install -y sudo || true
+      - emojicode/install
       - run:
           name: build emojicode
           command: emojicodec hello.emojic
@@ -32,5 +25,5 @@ jobs:
 workflows:
   version: 2
   build:
-    jobs: 
+    jobs:
       - run_emojicode

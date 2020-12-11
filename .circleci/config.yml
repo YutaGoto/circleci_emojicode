@@ -14,6 +14,7 @@ jobs:
     executor: cpp
     steps:
       - checkout
+      - run: apt install -y sudo
       - emojicode/install
       - run:
           name: build emojicode
@@ -21,6 +22,8 @@ jobs:
       - run:
           name: run
           command: ./hello
+  notify:
+    steps:
       - slack/notify:
           event: fail
           custom: |
@@ -61,3 +64,5 @@ workflows:
   build:
     jobs:
       - run_emojicode
+      - notify:
+          context: slack
